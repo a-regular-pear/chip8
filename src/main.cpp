@@ -1,21 +1,20 @@
 #include "Chip8.h"
 #include "Platform.h"
 
-int main( )
+int main( int argc, char* argv[])
 {
 
     Platform platform;
     Chip8 chip8;
 
     //Initialize SDL
-    if( !platform.init() )
+    if( !platform.init(argv[argc-1]) ) 
     {
         std::cerr << "Failed to initialize!\n";
         return -1;
     }
     
-    
-    if(!chip8.loadGame("ROMS/ROM"))
+    if(!chip8.loadGame(argv[argc-1]))
         return -2;
 
     bool quit = false;

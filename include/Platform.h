@@ -23,7 +23,7 @@ class Platform {
     static void audioCallback(void* userdata, uint8_t* stream, int len);
     uint8_t getChip8Key(SDL_Keycode key);
 public:
-    bool init();
+    bool init(std::string nameOfRom);
 
     void close();
 

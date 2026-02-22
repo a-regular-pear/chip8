@@ -38,7 +38,7 @@ uint8_t Platform::getChip8Key(SDL_Keycode key) {
     }   
 }
 
-bool Platform::init()
+bool Platform::init(std::string nameOfRom)
 {
     //Initialization flag
     bool success = true;
@@ -51,8 +51,21 @@ bool Platform::init()
     }
     else
     {
+        // Find the position of the last '/'
+        size_t lastSlashPos = nameOfRom.find_last_of('/');
+        
+        std::string filename;
+        
+        // std::string::npos means the character was not found
+        if (lastSlashPos != std::string::npos) {
+            // Extract everything after the last '/'
+            filename = nameOfRom.substr(lastSlashPos + 1);
+        } else {
+            // No '/' found, the whole string is the filename
+            filename = nameOfRom;
+        }
         //Create window
-        gWindow = SDL_CreateWindow( "Chip8", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCALE*SCREEN_WIDTH, SCALE*SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        gWindow = SDL_CreateWindow( ("Chip8 - " + filename).c_str(), SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCALE*SCREEN_WIDTH, SCALE*SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
         if( gWindow == NULL )
         {
             std::cerr << "Window could not be created! SDL_Error: "<<  SDL_GetError() << "\n";

@@ -1,6 +1,6 @@
 # CHIP-8 Emulator
 
-A straightforward CHIP-8 emulator written in C++17 using SDL2 for graphics, input, and audio.
+A straightforward CHIP-8 emulator written in C++ using SDL2 for graphics, input, and audio.
 
 ## Prerequisites
 
@@ -23,11 +23,10 @@ To clear the generated build files, run `make clean`.
 
 ## How to Run
 
-1. Place your CHIP-8 ROM file inside the `ROMS/` folder and name the file `ROM`.
-2. Execute the compiled program:
+Execute the compiled program by providing the path to your CHIP-8 ROM file as a command-line argument:
 
 ```bash
-./chip8
+./chip8 path/to/your/rom.ch8
 ```
 
 ## Controls
