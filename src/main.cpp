@@ -10,7 +10,7 @@ int main( )
     //Initialize SDL
     if( !platform.init() )
     {
-        printf( "Failed to initialize!\n" );
+        std::cerr << "Failed to initialize!\n";
         return -1;
     }
     

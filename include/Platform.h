@@ -3,6 +3,7 @@
 
 #include <SDL2/SDL.h>
 #include "Chip8.h"
+#include <iostream>
 
 // Audio configuration
 const int SAMPLE_RATE = 44100;

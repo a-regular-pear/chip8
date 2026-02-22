@@ -46,16 +46,16 @@ bool Platform::init()
     //Initialize SDL
     if( SDL_Init( SDL_INIT_VIDEO | SDL_INIT_AUDIO ) < 0 )
     {
-        printf( "SDL could not initialize! SDL_Error: %s\n", SDL_GetError() );
+        std::cerr << "SDL could not initialize! SDL_Error: "<<  SDL_GetError() << "\n";
         success = false;
     }
     else
     {
         //Create window
-        gWindow = SDL_CreateWindow( "SDL Tutorial", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCALE*SCREEN_WIDTH, SCALE*SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
+        gWindow = SDL_CreateWindow( "Chip8", SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED, SCALE*SCREEN_WIDTH, SCALE*SCREEN_HEIGHT, SDL_WINDOW_SHOWN );
         if( gWindow == NULL )
         {
-            printf( "Window could not be created! SDL_Error: %s\n", SDL_GetError() );
+            std::cerr << "Window could not be created! SDL_Error: "<<  SDL_GetError() << "\n";
             success = false;
         }
         else
@@ -73,7 +73,7 @@ bool Platform::init()
             want.callback = audioCallback; // Attach the generator function
 
             if (SDL_OpenAudio(&want, &have) != 0) {
-                printf("Failed to open audio: %s\n", SDL_GetError());
+                std::cerr << "Failed to open audio: " << SDL_GetError() << "\n";
                 success = false;
             }
 
